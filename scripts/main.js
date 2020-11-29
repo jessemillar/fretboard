@@ -280,8 +280,8 @@ guitarStrings[6] = new Array(
 function selectFret() {
   // Select a number from the range of 1-6
   var selectedGuitarString = Math.floor(Math.random() * 6) + 1;
-  // Select a number from the range of 0-22
-  var selectedGuitarFret = Math.floor(Math.random() * 23);
+  // Select a number from the range of 1-22
+  var selectedGuitarFret = Math.floor(Math.random() * 22) + 1;
 
   swal({
     title:
