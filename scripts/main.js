@@ -282,4 +282,31 @@ function selectFret() {
   var selectedGuitarString = Math.floor(Math.random() * 6) + 1;
   // Select a number from the range of 0-22
   var selectedGuitarFret = Math.floor(Math.random() * 23);
+
+  swal({
+    title:
+      "What note is string " +
+      selectedGuitarString +
+      ", fret " +
+      selectedGuitarFret +
+      "?",
+    text:
+      "Tip: String " +
+      selectedGuitarString +
+      " is " +
+      guitarStringNames[selectedGuitarString] +
+      ".",
+    button: "Show Answer"
+  }).then(value => {
+    swal({
+      title:
+        "The answer is " +
+        guitarStrings[selectedGuitarString][selectedGuitarFret] +
+        ".",
+      text: "Did you get it right?",
+      button: "Play Again"
+    }).then(value => {
+      selectFret();
+    });
+  });
 }
