@@ -296,16 +296,20 @@ function selectFret() {
       " is " +
       guitarStringNames[selectedGuitarString] +
       ".",
-    button: "Show Answer"
-  }).then(value => {
+    button: "Show Answer",
+  }).then((value) => {
     swal({
       title:
-        "The answer is " +
+        "String " +
+        selectedGuitarString +
+        ", fret " +
+        selectedGuitarFret +
+        " is " +
         guitarStrings[selectedGuitarString][selectedGuitarFret] +
         ".",
       text: "Did you get it right?",
-      button: "Play Again"
-    }).then(value => {
+      button: "Play Again",
+    }).then((value) => {
       selectFret();
     });
   });
