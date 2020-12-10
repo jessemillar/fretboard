@@ -1,6 +1,6 @@
 # fretboard
 [![Man Hours](https://img.shields.io/endpoint?url=https%3A%2F%2Fmh.jessemillar.com%2Fhours%3Frepo%3Dhttps%3A%2F%2Fgithub.com%2Fjessemillar%2Ffretboard.git)](https://jessemillar.com/r/man-hours)
 
-A quick and dirty flashcard collection for learning the musical notes along a guitar's fretboard. Works on desktop or mobile.
+A quick and dirty flashcard collection for learning the musical notes along a guitar's fretboard when tuned to "standard." Works on desktop or mobile.
 
 https://jessemillar.github.io/fretboard
