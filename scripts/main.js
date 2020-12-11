@@ -277,11 +277,22 @@ guitarStrings[6] = new Array(
   "D#/Eb"
 );
 
-function selectFret() {
+function main() {
+  const urlParams = new URLSearchParams(window.location.search);
+  console.log(urlParams.get("dotted"));
+  selectFret(urlParams.get("dotted"));
+}
+
+function selectFret(dotted) {
   // Select a number from the range of 1-6
   var selectedGuitarString = Math.floor(Math.random() * 6) + 1;
   // Select a number from the range of 1-22
   var selectedGuitarFret = Math.floor(Math.random() * 22) + 1;
+  if (dotted == "true") {
+    var dottedFrets = [3, 5, 7, 9, 12, 15, 17, 19, 21];
+    selectedGuitarFret =
+      dottedFrets[Math.floor(Math.random() * dottedFrets.length)];
+  }
 
   swal({
     title:
