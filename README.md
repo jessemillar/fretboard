@@ -6,3 +6,5 @@
 A quick and dirty flashcard collection for learning the musical notes along a guitar's fretboard when tuned to "standard." Works on desktop or mobile.
 
 https://jessemillar.github.io/fretboard
+
+Icon by Freepik from flaticon.com.
