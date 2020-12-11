@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="scripts/main.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -58,18 +58,29 @@
         height: auto;
         text-align: center;
         size: 10px;
-        opacity: 0.5;
-        color: #000000;
+        color: #D8DEE9;
         margin-bottom: 5px;
       }
 
       #attribution a {
-        color: #000000;
+        color: #D8DEE9;
       }
     </style>
   </head>
   <body onload="main()">
-    <div id="attribution">
+    <div
+      id="attribution"
+      style="
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -o-user-select: none;
+      "
+      unselectable="on"
+      onselectstart="return false;"
+      onmousedown="return false;"
+    >
       Icon by
       <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
         >Freepik</a
