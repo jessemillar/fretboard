@@ -278,9 +278,30 @@ guitarStrings[6] = new Array(
 );
 
 function main() {
-  const urlParams = new URLSearchParams(window.location.search);
-  console.log(urlParams.get("dotted"));
-  selectFret(urlParams.get("dotted"));
+  menu();
+}
+
+function menu() {
+  swal({
+    title: "Fretboard",
+    text: "Select mode:",
+    buttons: {
+      allFrets: {
+        text: "All Frets",
+        value: "all",
+      },
+      dottedFrets: {
+        text: "Dotted Frets",
+        value: "dotted",
+      },
+    },
+  }).then((value) => {
+    if (value == "dotted") {
+      selectFret("true");
+    } else {
+      selectFret();
+    }
+  });
 }
 
 function selectFret(dotted) {
@@ -307,21 +328,42 @@ function selectFret(dotted) {
       " is " +
       guitarStringNames[selectedGuitarString] +
       " in standard guitar tuning.",
-    button: "Show Answer",
+    buttons: {
+      cancel: "Menu",
+      check: true,
+    },
   }).then((value) => {
-    swal({
-      title:
-        "String " +
-        selectedGuitarString +
-        ", fret " +
-        selectedGuitarFret +
-        " is " +
-        guitarStrings[selectedGuitarString][selectedGuitarFret] +
-        ".",
-      text: "Did you get it right?",
-      button: "Play Again",
-    }).then((value) => {
-      selectFret();
-    });
+    switch (value) {
+      default:
+        menu();
+        break;
+
+      case "check":
+        swal({
+          title:
+            "String " +
+            selectedGuitarString +
+            ", fret " +
+            selectedGuitarFret +
+            " is " +
+            guitarStrings[selectedGuitarString][selectedGuitarFret] +
+            ".",
+          text: "Did you get it right?",
+          buttons: {
+            cancel: "Menu",
+            play: true,
+          },
+        }).then((value) => {
+          switch (value) {
+            default:
+              menu();
+              break;
+
+            case "play":
+              selectFret(dotted);
+              break;
+          }
+        });
+    }
   });
 }
