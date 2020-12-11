@@ -295,7 +295,7 @@ function selectFret() {
       selectedGuitarString +
       " is " +
       guitarStringNames[selectedGuitarString] +
-      ".",
+      " in standard guitar tuning.",
     button: "Show Answer",
   }).then((value) => {
     swal({
