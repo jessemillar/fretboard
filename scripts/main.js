@@ -283,12 +283,14 @@ function main() {
 
 function menu() {
   swal({
-    title: "Fretboard",
-    text: "Select mode:",
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+    icon: "images/icon.png",
+    title: "Learn the Fretboard",
+    text: "Music theory is tough, but it's tougher if you don't know the names of the musical notes up and down the guitar neck, so let's test our knowledge of a guitar's fretboard! Select a mode below and flip through the flashcards. Good luck!",
     buttons: {
       allFrets: {
         text: "All Frets",
-        value: "all",
       },
       dottedFrets: {
         text: "Dotted Frets",
@@ -296,10 +298,14 @@ function menu() {
       },
     },
   }).then((value) => {
-    if (value == "dotted") {
-      selectFret("true");
-    } else {
-      selectFret();
+    switch (value) {
+      default:
+        selectFret();
+        break;
+
+      case "dotted":
+        selectFret("true");
+        break;
     }
   });
 }
@@ -316,6 +322,8 @@ function selectFret(dotted) {
   }
 
   swal({
+    closeOnClickOutside: false,
+    closeOnEsc: false,
     title:
       "What note is string " +
       selectedGuitarString +
@@ -340,6 +348,8 @@ function selectFret(dotted) {
 
       case "check":
         swal({
+          closeOnClickOutside: false,
+          closeOnEsc: false,
           title:
             "String " +
             selectedGuitarString +
