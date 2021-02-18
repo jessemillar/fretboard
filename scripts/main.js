@@ -1,5 +1,6 @@
 // Note: I'm starting at index 1 to match the guitar string naming conventions
 var guitarStringNames = ["", "E", "B", "G", "D", "A", "E"];
+var dottedFrets = [3, 5, 7, 9, 12, 15, 17, 19, 21];
 var guitarStrings = new Array();
 guitarStrings[1] = new Array(
   "E",
@@ -287,36 +288,47 @@ function menu() {
     closeOnEsc: false,
     icon: "images/icon.png",
     title: "Learn the Fretboard",
-    text: "Music theory is tough, but it's tougher if you don't know the names of the musical notes up and down the guitar neck, so let's test our knowledge of a guitar's fretboard! Select a mode below and flip through the flashcards. Good luck!",
+    content: {
+      element: "p",
+      attributes: {
+        innerHTML:
+          "Music theory is tough, but it's tougher if you don't know the names of the musical notes up and down the guitar neck, so let's test our knowledge of a guitar's fretboard! Select a mode below and flip through the flashcards (<a href='https://vm.tiktok.com/ZMeNUsTne/'>Why E and A?</a>). Good luck!",
+      },
+    },
     buttons: {
       allFrets: {
         text: "All Frets",
       },
       dottedFrets: {
-        text: "Dotted Frets",
+        text: "Dots",
         value: "dotted",
+      },
+      eString: {
+        text: "E",
+        value: "e",
+      },
+      aString: {
+        text: "A",
+        value: "a",
       },
     },
   }).then((value) => {
-    switch (value) {
-      default:
-        selectFret();
-        break;
-
-      case "dotted":
-        selectFret("true");
-        break;
-    }
+    selectFret(value);
   });
 }
 
-function selectFret(dotted) {
+function selectFret(mode) {
   // Select a number from the range of 1-6
   var selectedGuitarString = Math.floor(Math.random() * 6) + 1;
+  if (mode == "e") {
+    selectedGuitarString = 6;
+  } else if (mode == "a") {
+    selectedGuitarString = 5;
+  }
+
   // Select a number from the range of 1-22
   var selectedGuitarFret = Math.floor(Math.random() * 22) + 1;
-  if (dotted == "true") {
-    var dottedFrets = [3, 5, 7, 9, 12, 15, 17, 19, 21];
+  if (mode == "dotted") {
     selectedGuitarFret =
       dottedFrets[Math.floor(Math.random() * dottedFrets.length)];
   }
@@ -361,7 +373,7 @@ function selectFret(dotted) {
           text: "Did you get it right?",
           buttons: {
             cancel: "Menu",
-            play: true,
+            next: true,
           },
         }).then((value) => {
           switch (value) {
@@ -369,8 +381,8 @@ function selectFret(dotted) {
               menu();
               break;
 
-            case "play":
-              selectFret(dotted);
+            case "next":
+              selectFret(mode);
               break;
           }
         });
