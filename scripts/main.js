@@ -297,7 +297,7 @@ function menu() {
     },
     buttons: {
       allFrets: {
-        text: "All Frets",
+        text: "All",
       },
       dottedFrets: {
         text: "Dots",
